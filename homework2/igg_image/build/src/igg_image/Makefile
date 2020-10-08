@@ -56,29 +56,16 @@ CMAKE_BINARY_DIR = /home/krishnesh/modern_cpp/Modern-C-/homework2/igg_image/buil
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target install/strip
-install/strip: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
 
-# Special rule for the target install/strip
-install/strip/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip/fast
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
 
-# Special rule for the target install
-install: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install
-
-# Special rule for the target install
-install/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install/fast
+.PHONY : rebuild_cache/fast
 
 # Special rule for the target edit_cache
 edit_cache:
@@ -90,50 +77,6 @@ edit_cache:
 edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
-
-# Special rule for the target install/local
-install/local: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local
-
-# Special rule for the target install/local
-install/local/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local/fast
-
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
-	/usr/bin/ctest --force-new-ctest-process $(ARGS)
-.PHONY : test
-
-# Special rule for the target test
-test/fast: test
-
-.PHONY : test/fast
-
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
-.PHONY : list_install_components
-
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
-
-.PHONY : list_install_components/fast
-
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -168,21 +111,6 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-src/igg_image/CMakeFiles/main.dir/rule:
-	cd /home/krishnesh/modern_cpp/Modern-C-/homework2/igg_image/build && $(MAKE) -f CMakeFiles/Makefile2 src/igg_image/CMakeFiles/main.dir/rule
-.PHONY : src/igg_image/CMakeFiles/main.dir/rule
-
-# Convenience name for target.
-main: src/igg_image/CMakeFiles/main.dir/rule
-
-.PHONY : main
-
-# fast build rule for target.
-main/fast:
-	cd /home/krishnesh/modern_cpp/Modern-C-/homework2/igg_image/build && $(MAKE) -f src/igg_image/CMakeFiles/main.dir/build.make src/igg_image/CMakeFiles/main.dir/build
-.PHONY : main/fast
-
-# Convenience name for target.
 src/igg_image/CMakeFiles/image.dir/rule:
 	cd /home/krishnesh/modern_cpp/Modern-C-/homework2/igg_image/build && $(MAKE) -f CMakeFiles/Makefile2 src/igg_image/CMakeFiles/image.dir/rule
 .PHONY : src/igg_image/CMakeFiles/image.dir/rule
@@ -196,6 +124,21 @@ image: src/igg_image/CMakeFiles/image.dir/rule
 image/fast:
 	cd /home/krishnesh/modern_cpp/Modern-C-/homework2/igg_image/build && $(MAKE) -f src/igg_image/CMakeFiles/image.dir/build.make src/igg_image/CMakeFiles/image.dir/build
 .PHONY : image/fast
+
+# Convenience name for target.
+src/igg_image/CMakeFiles/main.dir/rule:
+	cd /home/krishnesh/modern_cpp/Modern-C-/homework2/igg_image/build && $(MAKE) -f CMakeFiles/Makefile2 src/igg_image/CMakeFiles/main.dir/rule
+.PHONY : src/igg_image/CMakeFiles/main.dir/rule
+
+# Convenience name for target.
+main: src/igg_image/CMakeFiles/main.dir/rule
+
+.PHONY : main
+
+# fast build rule for target.
+main/fast:
+	cd /home/krishnesh/modern_cpp/Modern-C-/homework2/igg_image/build && $(MAKE) -f src/igg_image/CMakeFiles/main.dir/build.make src/igg_image/CMakeFiles/main.dir/build
+.PHONY : main/fast
 
 image.o: image.cpp.o
 
@@ -257,15 +200,10 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... install/strip"
-	@echo "... install"
+	@echo "... rebuild_cache"
+	@echo "... image"
 	@echo "... edit_cache"
 	@echo "... main"
-	@echo "... image"
-	@echo "... install/local"
-	@echo "... test"
-	@echo "... list_install_components"
-	@echo "... rebuild_cache"
 	@echo "... image.o"
 	@echo "... image.i"
 	@echo "... image.s"

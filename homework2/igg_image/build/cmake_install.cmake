@@ -40,7 +40,6 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/krishnesh/modern_cpp/Modern-C-/homework2/igg_image/build/src/cmake_install.cmake")
-  include("/home/krishnesh/modern_cpp/Modern-C-/homework2/igg_image/build/tests/cmake_install.cmake")
 
 endif()
 

@@ -20,10 +20,10 @@ string
 vector
 -
 
-/home/krishnesh/modern_cpp/Modern-C-/homework2/igg_image/src/igg_image/image.cpp
+/home/krishnesh/modern_cpp/Modern-C-/homework2/igg_image/src/igg_image/main.cpp
 iostream
 -
-vector
+string
 -
 image.h
 -

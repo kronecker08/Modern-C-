@@ -6,5 +6,5 @@ CXX_FLAGS = -Wall -Wextra -fPIC -O3   -std=gnu++11
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/krishnesh/modern_cpp/Modern-C-/homework2/igg_image/src 
+CXX_INCLUDES = -I/home/krishnesh/modern_cpp/Modern-C-/homework2/igg_image/src -I/home/krishnesh/modern_cpp/Modern-C-/homework2/igg_image/src/igg_image 
 

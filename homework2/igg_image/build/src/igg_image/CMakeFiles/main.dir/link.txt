@@ -1,1 +1,1 @@
-/usr/bin/c++  -Wall -Wextra -fPIC -O3  -rdynamic CMakeFiles/main.dir/main.cpp.o  -o ../../../bin/main ../../../lib/libimage.a 
+/usr/bin/c++  -Wall -Wextra -fPIC -O3  -rdynamic CMakeFiles/main.dir/main.cpp.o  -o ../../../bin/main -Wl,-rpath,/home/krishnesh/modern_cpp/Modern-C-/homework2/igg_image/lib ../../../lib/libimage.a ../../../lib/libio_tools.so 

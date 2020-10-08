@@ -17,11 +17,12 @@ set(CMAKE_CXX_FLAGS_RELEASE "-O3")
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
 
-include_directories(${PROJECT_SOURCE_DIR}/src)
+include_directories(${PROJECT_SOURCE_DIR}/src
+		    ${PROJECT_SOURCE_DIR}/src/igg_image)
 
 add_subdirectory(src)
-enable_testing()
-add_subdirectory(tests)
+## enable_testing()
+## add_subdirectory(tests)
 
 ################################################################################
 ####################### Do not modify this file. ###############################

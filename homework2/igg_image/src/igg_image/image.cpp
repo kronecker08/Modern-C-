@@ -25,11 +25,25 @@ namespace igg{
  
  	void Image::WriteToPgm(const std::string& file_name){
  		const io_tools::ImageData dat = {rows_, cols_ , max_val_, data_};
- 		//dat.data = vector <int> {20}; //data_;
- 		//dat.rows = 20;//rows_;
- 		//dat.cols = 20;//cols_;
- 		//dat.max_val = 20 ;//max_val_;
  		bool confirm = io_tools::WriteToPgm(dat, file_name);
  		std::cout<<"Bool value true if write was success else false "<<confirm<<std::endl;
  	}
-}
+ 	std::vector <float> Image::ComputeHistogram(int bins){
+ 	 	float factor = 255.0 / bins;
+ 	 	std::vector <float> result;
+ 	 	for (int j = 1; j<=bins; j++)
+ 	 	{//checks for the vlue to be less than 
+ 	 		float res = 0.0 ; //number of values less than 
+ 	 		for(auto & i : data_){
+ 	 			if (((j-1)*factor)<i && i<(j*factor)){
+ 	 				res = res + 1.0;
+ 	 			}
+ 	 		}
+ 	 		float size = data_.size();
+ 	 		result.emplace_back(res/size);
+ 	 	}
+ 	 	return result;
+ 	}
+
+
+}//namespace igg

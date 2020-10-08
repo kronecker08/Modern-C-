@@ -19,6 +19,7 @@ class Image {
           //fills the vector with data from the pgm file
   void WriteToPgm(const std::string& file_name);          // wrote 
   ///////////////////// Create the public interface here ///////////////////////
+  std::vector <float> ComputeHistogram(int bins);
  private:
   int rows_ = 0;
   int cols_ = 0;
